@@ -1,0 +1,33 @@
+﻿@page
+@model ESHOP.Pages.Admin.ManageGroups.DeleteModel
+
+@{
+    ViewData["Title"] = "حذف";
+}
+
+<h1>حذف</h1>
+
+<h3>آیا از حذف این گروه مطمئن هستید؟</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Category.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category.Description)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Category.Id" />
+        <input type="submit" value="حذف" class="btn btn-danger" /> |
+        <a asp-page="./Index">بازگشت به لیست گروه ها</a>
+    </form>
+</div>

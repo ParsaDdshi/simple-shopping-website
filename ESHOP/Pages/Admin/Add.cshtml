@@ -1,0 +1,54 @@
+﻿@page
+@model ESHOP.Pages.Admin.AddModel
+@{
+    ViewData["Title"] = "افزودن محصول";
+}
+
+<h1>افزودن محصول</h1>
+
+<hr/>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="ProductViewModel.Name"></label>
+        <input asp-for="ProductViewModel.Name" class="form-control">
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="ProductViewModel.Price"></label>
+        <input asp-for="ProductViewModel.Price" class="form-control">
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="ProductViewModel.Description"></label>
+        <textarea asp-for="ProductViewModel.Description" class="form-control"></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="ProductViewModel.QuantityInStock"></label>
+        <input asp-for="ProductViewModel.QuantityInStock" class="form-control">
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="ProductViewModel.Picture"></label>
+        <input asp-for="ProductViewModel.Picture" class="form-control">
+    </div> <br/>
+        <label class="form-check-label"asp-for="ProductViewModel.Categories"></label>
+        @foreach (var item in Model.ProductViewModel.Categories)
+        {
+            <p>
+                <input type="checkbox" class="form-check-input" name="SelectedGroups" value="@item.Id"> @item.Name
+            </p>
+        }
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+    @Html.ValidationMessage("picture")
+
+    <button type="submit" class="btn btn-success">افزودن </button>
+    <a asp-page="./Index"> | بازگشت به صفحه اصلی</a>
+</form>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="~/css/custom.css">
+    <link href="https://cdn.rawgit.com/rastikerdar/sahel-font/v1.0.0-alpha23/dist/font-face.css" rel="stylesheet" type="text/css" />
+</head>
+<body dir="rtl" style="font-family: Sahel,sans-serif;">
+<div class="">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" asp-page="/Admin/Index">پنل ادمین</a>
+
+        <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" asp-page="/Admin/Index">مدیریت محصولات</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" asp-page="/Admin/ManageUsers/Index">مدیریت کاربران</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" asp-page="/Admin/ManageGroups/Index">گروه ها</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" asp-controller="Home" asp-action="Index"> بازگشت به سایت</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    
+    <div class="container">
+        @RenderBody()
+    </div>
+</div>
+@RenderSection("Scripts", false)
+</body>
+</html>

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ESHOP.Models.Product>
+
+@{
+    ViewData["Title"] = "EShop - " + ViewData["GroupName"];
+}
+<h1>محصولات گروه  @ViewData["GroupName"]</h1>
+
+<div class="row">
+    
+    @foreach (var item in Model)
+    {
+        <partial name="_ProductBox" model="item"/>
+    }
+</div>

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ESHOP.Models.Product>
+
+@{
+    ViewData["Title"] = "EShop";
+}
+
+<div class="text-center">
+    <h1 class="display-4">به فروشگاه من خوش آمدید</h1>
+    <div class="row">
+        
+        @foreach (var item in Model)
+        {
+            <partial name="_ProductBox" model="item"/>
+        }
+
+    </div>
+</div>

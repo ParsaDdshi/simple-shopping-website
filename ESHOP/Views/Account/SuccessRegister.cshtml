@@ -1,0 +1,16 @@
+﻿@model ESHOP.Models.RegisterViewModel
+@{
+    ViewData["Title"] = "EShop - Register";
+}
+
+<h1>ثبت نام با موفقیت انجام شد</h1>
+
+<div class="alert alert-success">
+    کاربر عزیز با ایمیل  "@Model.Email" ثبت نام شما با موفقیت انجام شد
+    <br/>
+    برای ورود به سایت روی لینک زیر کلیک کنید
+    <br/>
+    <p>
+        <a asp-controller="Account" asp-action="Login">ورود به سایت</a>
+    </p>
+</div>

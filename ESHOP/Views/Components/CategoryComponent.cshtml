@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ESHOP.Models.ShowProductViewModel>
+<ul class="list-group d-flex justify-content-between align-items-center">
+    @foreach (var item in Model)
+    {
+        <li class="list-group d-flex justify-content-between align-items-center">
+            <button type="button" class="btn btn-light">
+                <a asp-action="ShowProductsByGroupId"
+                   asp-controller="Product"
+                   asp-route-id="@item.CategoryId"
+                   asp-route-name="@item.Name">@item.Name</a>
+                <span class="badge badge-light">@item.ProductCount</span>
+            </button>
+        </li>
+    }
+</ul>

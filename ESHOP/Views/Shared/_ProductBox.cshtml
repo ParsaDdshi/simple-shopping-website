@@ -1,0 +1,13 @@
+﻿@model ESHOP.Models.Product
+
+<div class="col-md-4">
+    <div class="card">
+        <img class="card-img-top" src="/images/@(Model.Id).jpg" width="160" height="200">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <a asp-action="Detail" 
+               asp-controller="Home" 
+               asp-route-id="@Model.Id" class="btn btn-outline-info">نمایش جزئیات</a>
+        </div>
+    </div>
+</div>

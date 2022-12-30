@@ -1,0 +1,53 @@
+﻿@page
+@model ESHOP.Pages.Admin.ManageUsers.IndexModel
+
+@{
+    ViewData["Title"] = "لیست کاربران";
+}
+
+<h1>لیست کاربران</h1>
+<hr />
+<a asp-page="Create" class="btn btn-success">افزودن کاربر</a>
+<br /><br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].RegisterTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].IsAdmin)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.User) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisterTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAdmin)
+            </td>
+            <td>
+                    <a asp-page="./Edit" asp-route-id="@item.UserId" class="btn btn-warning">ویرایش</a> |
+                    <a asp-page="./Details" asp-route-id="@item.UserId" class="btn btn-info">جزئیات</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.UserId" class="btn btn-danger">حذف</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

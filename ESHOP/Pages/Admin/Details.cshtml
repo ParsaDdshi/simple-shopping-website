@@ -1,0 +1,50 @@
+﻿@page
+@model ESHOP.Pages.Admin.DetailsModel
+@{
+    ViewData["Title"] = "جزییات محصول";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Product.Name"></label>
+        <input readonly asp-for="Product.Name" class="form-control">
+        <span asp-validation-for="Product.Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Product.Price"></label>
+        <input readonly asp-for="Product.Price" class="form-control">
+        <span asp-validation-for="Product.Price"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Product.Description"></label>
+        <textarea readonly asp-for="Product.Description" class="form-control"></textarea>
+        <span asp-validation-for="Product.Description"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Product.QuantityInStock"></label>
+        <input readonly asp-for="Product.QuantityInStock" class="form-control">
+        <span asp-validation-for="Product.QuantityInStock"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Product.Picture"></label>
+        <input disabled asp-for="Product.Picture" class="form-control">
+        <span asp-validation-for="Product.Picture"></span>
+    </div>
+
+     <div class="form-group">
+         <label class="form-check-label"asp-for="Product.Categories"></label>
+        @foreach (var item in Model.Product.Categories)
+        {
+                <p>
+                    <input disabled type="checkbox" class="form-check-input" name="selectedGroups" value="@item.Id" 
+                @((Model.ProductGroups.Any(c => c == item.Id)? "checked":""))> @item.Name
+                </p>
+        }
+    </div>
+    <a asp-page="./Edit" asp-route-id="@Model.Product.Id" class="btn btn-warning">ویرایش</a> |
+    <a asp-page="./Index">بازگشت به صفحه اصلی</a>
+</form>

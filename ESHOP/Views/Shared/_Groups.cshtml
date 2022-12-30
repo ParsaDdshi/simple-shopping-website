@@ -1,0 +1,18 @@
+﻿@using ESHOP.Services.Interfaces
+@inject IProductService ProductService
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        گروه ها
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        @foreach (var item in ProductService.GetAllCategories())
+        {
+            <a class="dropdown-item"
+               asp-controller="Product" 
+               asp-action="ShowProductsByGroupId" 
+               asp-route-id="@item.Id"
+               asp-route-name="@item.Name">@item.Name</a>
+        }
+    </div>
+</li>

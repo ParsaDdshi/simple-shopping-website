@@ -1,0 +1,44 @@
+﻿@model ESHOP.Models.Order
+
+@{
+    ViewData["Title"] = "فرشگاه من - سبد خرید";
+}
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">نام محصول</th>
+            <th scope="col">تعداد</th>
+            <th scope="col">قیمت</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Details)
+        {
+            <tr>
+                <th>@item.Product.Name</th>
+                <td>@item.Count</td>
+                <td>@(item.Count * item.Price)</td>
+                <td>
+                    <a
+                        asp-action="RemoveItemFromCart"
+                        asp-controller="Order"
+                        asp-route-detailId="@item.DetailId">
+                        <button type="button" class="btn btn-danger">حذف</button>
+                    </a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <h5>جمع کل : @Model.Details.Sum(o => o.Count * o.Price)</h5>
+    <a type="button" class="btn btn-success" asp-action="Payment">پرداخت</a>
+}
+else
+{
+    <div class="alert alert-danger">فاکتوری یافت نشد</div>
+}
