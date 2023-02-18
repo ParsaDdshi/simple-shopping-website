@@ -19,16 +19,16 @@ namespace ESHOP.Pages.Admin
 
         public void OnGet(int id)
         {
-            var product = _productService.GetProduct(id);
-            Product = product;
+            Product = _productService.GetProduct(id); ;
 
-            product.Categories = _productService.GetCategories();
+            Product.Categories = _productService.GetCategories();
             ProductGroups = _productService.GetProductGroups(id);
         }
 
         public IActionResult OnPost()
         {
             Product.Categories = _productService.GetCategories();
+            ProductGroups = _productService.GetProductGroups(Product.Id);
             if (!ModelState.IsValid)
                 return Page();
 
