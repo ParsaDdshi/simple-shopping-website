@@ -44,16 +44,15 @@ namespace ESHOP.Pages.Admin
                 Item = item
             };
 
-            _productService.InsertItem(item);
-            _productService.Save();
-            _productService.InsertProduct(product);
-            _productService.Save();
-            product.ItemId = product.Id;
-            _productService.Save();
-
 
             if (ProductViewModel.Picture?.Length > 0)
             {
+                _productService.InsertItem(item);
+                _productService.Save();
+                _productService.InsertProduct(product);
+                _productService.Save();
+                product.ItemId = product.Id;
+                _productService.Save();
                 string filePath = Path.Combine(Directory.GetCurrentDirectory(),
                     "wwwroot",
                     "images",
